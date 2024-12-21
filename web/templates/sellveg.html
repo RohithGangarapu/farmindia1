@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,21 +109,21 @@
         <!-- Product Grid -->
         <div class="product-grid">
             <div class="product-card">
-                <img src="images/Tomatoes.jpg" alt="Wheat">
+                <img src="{% static 'images/Tomatoes.jpg' %}" alt="Wheat">
                 <h3>Tomato</h3>
                 <p>Tomato are available for sale</p>
                 <a href="#" class="btn">Sell</a>
             </div>
 
             <div class="product-card">
-                <img src="images/onion.jpg" alt="Corn">
+                <img src="{% static 'images/onion.jpg' %}" alt="Corn">
                 <h3>Onion</h3>
                 <p>Onion are available for sale</p>
                 <a href="#" class="btn">Sell</a>
             </div>
 
             <div class="product-card">
-                <img src="images/carrot.jpg" alt="Rice">
+                <img src="{% static 'images/carrot.jpg' %}" alt="Rice">
                 <h3>Carrot</h3>
                 <p>Carrots are available for sale.</p>
                 <a href="#" class="btn">Sell</a>
