@@ -114,7 +114,7 @@
                 navigator.geolocation.getCurrentPosition(function(position) {
                     const lat = position.coords.latitude;
                     const lon = position.coords.longitude;
-                    document.getElementById('location').value = `Latitude: ${lat}, Longitude: ${lon}`;
+                    
                     const apiUrl = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&addressdetails=1`;
 
                     fetch(apiUrl)
@@ -161,9 +161,11 @@
                         {% csrf_token %}
                         <input type="text" name="tip" id="tip" value="producer" hidden>
                         <input type="text" placeholder="Name" required><br>
-                        <input type="email" placeholder="Email" required><br>
+                        <input style="height:40px;width:95%;" type="number" placeholder="Phone Number" required><br>
                         <input type="password" placeholder="Password" required><br>
-                        <input type="text" id="location" placeholder="Location" required><br>
+                        <label for="imageUpload">Choose an image:</label>
+                        <input type="file" id="imageUpload" name="image" accept="image/*">
+                        <input type="text" id="location" placeholder="Location" required><br><br>
                         <button type="button" class="button" onclick="detectLocation()">Detect Location</button><br>
                         <button class="button" type="submit">Sign Up</button>
                     </form>
