@@ -3,87 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Producer and  Consumer Login</title>
+    <title>FarmConnect - Connect Farmers & Consumers</title>
     <style>
+        :root {
+            --primary-green: #2e7d32;
+            --secondary-green: #4caf50;
+            --light-green: #a5d6a7;
+            --earth-brown: #795548;
+            --cream: #fff8e1;
+        }
+
         body {
-            background-image: url('');
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            background-color: #f4f4f9;
+            min-height: 100vh;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                        url('/api/placeholder/1920/1080') center/cover;
+            color: #333;
         }
+
         .container {
             text-align: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
         }
-        .role-selection, .form-container {
+
+        .role-selection {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             margin: 20px;
         }
+
+        .role-selection h1 {
+            color: var(--primary-green);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .role-selection p {
+            color: var(--earth-brown);
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
         .button {
-            background-color: #007bff;
-            color: #fff;
+            background-color: var(--primary-green);
+            color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 30px;
             font-size: 16px;
-            margin: 5px;
+            margin: 10px;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .button:hover {
-            background-color: #0056b3;
+            background-color: var(--secondary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
+
         .form-container {
             display: none;
             width: 100%;
             max-width: 700px;
             margin: auto;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #fff;
+            border-radius: 20px;
+            background-color: white;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
+
         .tabs {
             display: flex;
             justify-content: space-between;
-            background-color: #007bff;
+            background-color: var(--primary-green);
         }
+
         .tabs button {
             flex: 1;
-            padding: 15px;
+            padding: 20px;
             font-size: 18px;
-            background-color: #007bff;
-            color: #fff;
+            background-color: transparent;
+            color: white;
             border: none;
             cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
         .tabs button.active {
-            background-color: #0056b3;
+            background-color: var(--secondary-green);
+            font-weight: bold;
         }
-        .form-content {
-            display: flex;
-            transform: translateX(0);
-            transition: transform 0.3s ease;
-        }
+
         .form-section {
             width: 100%;
             padding: 40px;
             box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.95);
         }
-        input[type="text"], input[type="email"], input[type="password"], input[type="text"] {
+
+        .form-section h2 {
+            color: var(--primary-green);
+            margin-bottom: 30px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"] {
             width: 90%;
             padding: 15px;
-            margin: 15px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            margin: 12px 0;
+            border: 2px solid var(--light-green);
+            border-radius: 10px;
             font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: white;
         }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+        }
+
+        .file-upload {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .file-upload label {
+            color: var(--earth-brown);
+            margin-bottom: 10px;
+        }
+
+        .location-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
         .hidden {
             display: none;
+        }
+
+        /* Added decorative elements */
+        .decorative-leaf {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .leaf-1 {
+            top: 20px;
+            left: 20px;
+            transform: rotate(45deg);
+        }
+
+        .leaf-2 {
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(-135deg);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            .form-section {
+                padding: 20px;
+            }
+
+            .button {
+                padding: 10px 20px;
+            }
         }
     </style>
     <script>
@@ -98,7 +213,7 @@
             document.getElementById('tip').value = selectedRole;
             document.getElementById('tip1').value = selectedRole;
             document.querySelector('.tabs button:first-child').classList.add('active');
-            switchTab(1); // Show login by default
+            switchTab(1);
         }
 
         function switchTab(tabIndex) {
@@ -111,6 +226,7 @@
                 section.classList.toggle('hidden', index !== tabIndex);
             });
         }
+
         function detectLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
@@ -143,12 +259,20 @@
     </script>
 </head>
 <body>
+    <!-- Decorative SVG elements -->
+    <svg class="decorative-leaf leaf-1" viewBox="0 0 100 100">
+        <path d="M50,10 Q80,50 50,90 Q20,50 50,10" fill="#4caf50"/>
+    </svg>
+    <svg class="decorative-leaf leaf-2" viewBox="0 0 100 100">
+        <path d="M50,10 Q80,50 50,90 Q20,50 50,10" fill="#4caf50"/>
+    </svg>
+
     <div class="container">
         <div class="role-selection">
-            <h1>Welcome!</h1>
-            <p>Please select your role to continue:</p>
-            <button class="button" onclick="showForm('Producer')">Producer</button>
-            <button class="button" onclick="showForm('Consumer')">Consumer</button>
+            <h1>Welcome to FarmConnect</h1>
+            <p>Connecting farmers and consumers for a sustainable future</p>
+            <button class="button" onclick="showForm('Producer')">Join as Farmer</button>
+            <button class="button" onclick="showForm('Consumer')">Join as Consumer</button>
         </div>
 
         <div class="form-container">
@@ -159,17 +283,24 @@
             <div class="form-content">
                 <div class="form-section hidden">
                     <h2>Sign Up as <span id="role-signup"></span></h2>
-                    <form action="{% url 'home' %}"  method="post">
+                    <form action="{% url 'home' %}" method="post">
                         {% csrf_token %}
                         <input type="text" name="tip" id="tip" hidden>
-                        <input type="text" placeholder="Name" required><br>
-                        <input style="height:40px;width:95%;" type="number" placeholder="Phone Number" required><br>
-                        <input type="password" placeholder="Password" required><br>
-                        <label for="imageUpload">Choose an image:</label>
-                        <input type="file" id="imageUpload" name="image" accept="image/*" required>
-                        <input type="text" id="location" placeholder="Location" required><br><br>
-                        <button type="button" class="button" onclick="detectLocation()">Detect Location</button><br>
-                        <button class="button" type="submit">Sign Up</button>
+                        <input type="text" placeholder="Full Name" required>
+                        <input type="number" placeholder="Phone Number" required>
+                        <input type="password" placeholder="Create Password" required>
+                        
+                        <div class="file-upload">
+                            <label for="imageUpload">Profile Picture</label>
+                            <input type="file" id="imageUpload" name="image" accept="image/*" required>
+                        </div>
+                        
+                        <div class="location-container">
+                            <input type="text" id="location" placeholder="Your Location" required>
+                            <button type="button" class="button" onclick="detectLocation()">Detect Location</button>
+                        </div>
+                        
+                        <button class="button" type="submit">Create Account</button>
                     </form>
                 </div>
                 <div class="form-section">
@@ -177,8 +308,8 @@
                     <form action="{% url 'home' %}" method="post">
                         {% csrf_token %}
                         <input type="text" name="tip" id="tip1" hidden>
-                        <input type="email" placeholder="Email" required><br>
-                        <input type="password" placeholder="Password" required><br>
+                        <input type="email" placeholder="Email Address" required>
+                        <input type="password" placeholder="Password" required>
                         <button class="button" type="submit">Login</button>
                     </form>
                 </div>
