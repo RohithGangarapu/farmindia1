@@ -102,8 +102,8 @@
         <a href="#">About</a>
     </nav>
     <div class="container">
-        <h2>Producer Dashboard</h2>
-        <p>Welcome, Producer! Here are the Vegetables available to Sell:</p>
+        <h2>Consumer Dashboard</h2>
+        <p>Welcome,consumer! Here are the Vegetables available to Order:</p>
 
         <!-- Product Grid -->
         <div class="product-grid">
@@ -131,6 +131,26 @@
             <!-- More product cards can be added here -->
         </div>
     </div>
+    <script>
+        // URL array for redirection (you can update it as required)
+    
+        // Add event listeners to the order buttons
+        const buttons = document.getElementsByClassName('btn');
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', function () {
+                // Prompt the consumer for price and quantity
+                const price = prompt("Enter the price you are willing to pay:");
+                const quantity = prompt("Enter the quantity you want to order:");
+                if (price && quantity) {
+                    // Construct URL or handle order submission logic
+                    alert(`Order Summary:\nPrice: ${price}\nQuantity: ${quantity}`);
+                    // Redirect to another page or handle backend submission
+                } else {
+                    alert("Order canceled. Both price and quantity are required.");
+                }
+            });
+        }
+    </script>
     <footer>
         <p>&copy; 2024 CropConnect. All rights reserved.</p>
     </footer>

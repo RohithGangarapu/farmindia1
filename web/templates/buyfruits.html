@@ -95,14 +95,14 @@
         <p>Directly connecting farmers and producers</p>
     </header>
     <nav>
-        <a href="home.html">Home</a>
+        <a href="login">Home</a>
         <a href="#">Crops</a>
         <a href="#">Contact</a>
         <a href="#">About</a>
     </nav>
     <div class="container">
-        <h2>Producer Dashboard</h2>
-        <p>Welcome, Producer! Here are the Fruits available to Sell:</p>
+        <h2>Consumer Dashboard</h2>
+        <p>Welcome, Consumer! Here are the Fruits available to Buy:</p>
 
         <!-- Product Grid -->
         <div class="product-grid">
@@ -134,14 +134,24 @@
         <p>&copy; 2024 CropConnect. All rights reserved.</p>
     </footer>
     <script>
-        let arr=["{% url 'sellinfo' %}"]
-    for(let i=0;i<3;i++){
-    document.getElementsByClassName('btn')[i].addEventListener('click',
-    function() {
-            // Redirect to another page
-            window.location.href = arr[0];  // replace with your target URL
-        });
-    }
+        // URL array for redirection (you can update it as required)
+    
+        // Add event listeners to the order buttons
+        const buttons = document.getElementsByClassName('btn');
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', function () {
+                // Prompt the consumer for price and quantity
+                const price = prompt("Enter the price you are willing to pay:");
+                const quantity = prompt("Enter the quantity you want to order:");
+                if (price && quantity) {
+                    // Construct URL or handle order submission logic
+                    alert(`Order Summary:\nPrice: ${price}\nQuantity: ${quantity}`);
+                    // Redirect to another page or handle backend submission
+                } else {
+                    alert("Order canceled. Both price and quantity are required.");
+                }
+            });
+        }
     </script>
 </body>
 </html>

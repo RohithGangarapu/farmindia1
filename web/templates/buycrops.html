@@ -102,8 +102,8 @@
         <a href="#">About</a>
     </nav>
     <div class="container">
-        <h2>Producer Dashboard</h2>
-        <p>Welcome, Producer! Here are the crops available for purchase:</p>
+        <h2>Consumer Dashboard</h2>
+        <p>Welcome,consumer! Here are the crops available to order:</p>
 
         <!-- Product Grid -->
         <div class="product-grid">
@@ -111,21 +111,21 @@
                 <img src="{% static 'images/wheat.jpeg' %}" alt="Wheat">
                 <h3>Wheat</h3>
                 <p>High-quality wheat available for sale.</p>
-                <a href="#" class="btn">Sell</a>
+                <a href="#" class="btn">Order</a>
             </div>
 
             <div class="product-card">
                 <img src="{% static 'images/corn.webp' %}" alt="Corn">
                 <h3>Corn</h3>
                 <p>Fresh and healthy corn ready for sale.</p>
-                <a href="#" class="btn">Sell</a>
+                <a href="#" class="btn">Order</a>
             </div>
 
             <div class="product-card">
                 <img src="{% static 'images/rice.jpg' %}" alt="Rice">
                 <h3>Rice</h3>
                 <p>Top-grade rice available for sale.</p>
-                <a href="#" class="btn">Sell</a>
+                <a href="#" class="btn">Order</a>
             </div>
 
             <!-- More product cards can be added here -->
@@ -134,5 +134,25 @@
     <footer>
         <p>&copy; 2024 CropConnect. All rights reserved.</p>
     </footer>
+    <script>
+        // URL array for redirection (you can update it as required)
+    
+        // Add event listeners to the order buttons
+        const buttons = document.getElementsByClassName('btn');
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', function () {
+                // Prompt the consumer for price and quantity
+                const price = prompt("Enter the price you are willing to pay:");
+                const quantity = prompt("Enter the quantity you want to order:");
+                if (price && quantity) {
+                    // Construct URL or handle order submission logic
+                    alert(`Order Summary:\nPrice: ${price}\nQuantity: ${quantity}`);
+                    // Redirect to another page or handle backend submission
+                } else {
+                    alert("Order canceled. Both price and quantity are required.");
+                }
+            });
+        }
+    </script>
 </body>
 </html>
