@@ -4,19 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sell Fruits,Vegetables or Crops</title>
+    <title>Sell Fruits, Vegetables or Crops</title>
     <style>
+        /* Your existing CSS */
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom, #e8f5e9, #ffffff); /* Light green to white gradient for a fresh look */
+            background: linear-gradient(to bottom, #e8f5e9, #ffffff);
             color: #333;
         }
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(to right, #4caf50, #2e7d32); /* Green gradient for navbar */
+            background: linear-gradient(to right, #4caf50, #2e7d32);
             color: #fff;
             padding: 15px 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -38,7 +39,7 @@
         .container {
             text-align: center;
             padding: 50px 20px;
-            background: rgba(255, 255, 255, 0.9); /* Semi-transparent container background */
+            background: rgba(255, 255, 255, 0.9);
             margin: 20px auto;
             border-radius: 15px;
             max-width: 1200px;
@@ -73,7 +74,7 @@
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-            border-color: #4caf50; /* Highlight with green border on hover */
+            border-color: #4caf50;
         }
         .card img {
             width: 100%;
@@ -103,16 +104,24 @@
             margin: 0;
             font-size: 14px;
         }
+        
+        /* Hide sections by default */
+        .section {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
     </style>
-    
 </head>
 <body>
     <div class="navbar">
         <h1>Sell Your Produce</h1>
         <div>
             <a href="login">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <a href="#" onclick="showSection('about')">About</a>
+            <a href="#" onclick="showSection('contact')">Contact</a>
         </div>
     </div>
 
@@ -137,16 +146,39 @@
             </div>
         </div>
     </div>
-  <script>
-    let arr=["{% url 'sellfruits' %}","{%url 'sellveg' %}","{% url 'sellcrop' %}"]
-    for(let i=0;i<3;i++){
-    document.getElementsByClassName('card')[i].addEventListener('click',
-    function() {
-            // Redirect to another page
-            window.location.href = arr[i];  // replace with your target URL
-        });
-    }
-  </script>
+
+    <!-- About Section -->
+    <div id="about" class="section">
+        <h2>About Us</h2>
+        <p>We help you sell fresh and organic produce directly to your customers. Our platform connects farmers and customers for better produce access and sales.</p>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, feel free to reach out to us at <strong>support@produce.com</strong>.</p>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections first
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('show'));
+            
+            // Show the clicked section
+            const section = document.getElementById(sectionId);
+            section.classList.add('show');
+        }
+
+        let arr=["{% url 'sellfruits' %}","{% url 'sellveg' %}","{% url 'sellcrop' %}"]
+        for(let i=0;i<3;i++){
+            document.getElementsByClassName('card')[i].addEventListener('click', function() {
+                // Redirect to another page
+                window.location.href = arr[i];  // replace with your target URL
+            });
+        }
+    </script>
+
     <div class="footer">
         <p>&copy; 2024 Sell Your Produce. All rights reserved.</p>
     </div>
