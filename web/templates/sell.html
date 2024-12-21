@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Fruits or Vegetables</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+        }
+        .navbar h1 {
+            margin: 0;
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .card h3 {
+            margin: 15px 0;
+            color: #333;
+        }
+        .card p {
+            color: #666;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Sell Your Produce</h1>
+        <div>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Select What You Want to Sell</h2>
+        <p>Choose between fruits or vegetables to get started.</p>
+        <div class="options">
+            <div class="card" onclick="alert('You selected Fruits!')">
+                <img height=200px src="images/pngtree-many-fruits-are-placed-next-to-each-other-in-different-piles-image_2972213.jpg" alt="Fruits">
+                <h3>Fruits</h3>
+                <p>Sell fresh and organic fruits to your customers.</p>
+            </div>
+            <div class="card" onclick="alert('You selected Vegetables!')">
+                <img src="images/fresh-vegetables.jpg" alt="Vegetables">
+                <h3>Vegetables</h3>
+                <p>Sell fresh and organic vegetables to your customers.</p>
+            </div>
+            <div class="card" onclick="alert('You selected Vegetables!')">
+                <img src="images/crops.jpg" alt="Vegetables">
+                <h3>Crops</h3>
+                <p>Sell Crops to your customers.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Sell Your Produce. All rights reserved.</p>
+    </div>
+</body>
+</html>

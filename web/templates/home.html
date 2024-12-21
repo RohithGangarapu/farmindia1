@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producer and  Consumer Login</title>
+    <style>
+        body {
+            background-image: url('');
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+        }
+        .role-selection, .form-container {
+            margin: 20px;
+        }
+        .button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .form-container {
+            display: none;
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            background-color: #007bff;
+        }
+        .tabs button {
+            flex: 1;
+            padding: 15px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .tabs button.active {
+            background-color: #0056b3;
+        }
+        .form-content {
+            display: flex;
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+        }
+        .form-section {
+            width: 100%;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        input[type="text"], input[type="email"], input[type="password"], input[type="text"] {
+            width: 90%;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        let selectedRole = "";
+
+        function showForm(role) {
+            selectedRole = role;
+            document.querySelector('.role-selection').style.display = 'none';
+            document.querySelector('.form-container').style.display = 'block';
+            document.getElementById('role-signup').textContent = selectedRole;
+            document.getElementById('role-login').textContent = selectedRole;
+            document.querySelector('.tabs button:first-child').classList.add('active');
+            switchTab(1); // Show login by default
+        }
+
+        function switchTab(tabIndex) {
+            const tabs = document.querySelectorAll('.tabs button');
+            tabs.forEach((tab, index) => {
+                tab.classList.toggle('active', index === tabIndex);
+            });
+            const formSections = document.querySelectorAll('.form-section');
+            formSections.forEach((section, index) => {
+                section.classList.toggle('hidden', index !== tabIndex);
+            });
+        }
+
+        // Function to detect user's location and find the place
+        function detectLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    
+                    // Display latitude and longitude in the location field
+                    document.getElementById('location').value = `Latitude: ${lat}, Longitude: ${lon}`;
+                    
+                    // Call reverse geocoding API to get the place name
+                    const apiUrl = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&addressdetails=1`;
+
+                    fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data && data.address) {
+                                // Format the address or location details
+                                const location = data.address.city || data.address.town || data.address.village || 'Unknown location';
+                                document.getElementById('location').value = location;
+                            } else {
+                                alert("Location details not available.");
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching location:', error);
+                            alert("Failed to retrieve location details.");
+                        });
+                }, function() {
+                    alert("Unable to retrieve your location.");
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="role-selection">
+            <h1>Welcome!</h1>
+            <p>Please select your role to continue:</p>
+            <button class="button" onclick="showForm('Producer')">Producer</button>
+            <button class="button" onclick="showForm('Consumer')">Consumer</button>
+        </div>
+
+        <div class="form-container">
+            <div class="tabs">
+                <button onclick="switchTab(0)">Sign Up</button>
+                <button onclick="switchTab(1)">Login</button>
+            </div>
+            <div class="form-content">
+                <div class="form-section hidden">
+                    <h2>Sign Up as <span id="role-signup"></span></h2>
+                    <form>
+                        <input type="text" placeholder="Name" required><br>
+                        <input type="email" placeholder="Email" required><br>
+                        <input type="password" placeholder="Password" required><br>
+                        <input type="text" id="location" placeholder="Location" required><br>
+                        <button type="button" class="button" onclick="detectLocation()">Detect Location</button><br>
+                        <button class="button" type="submit">Sign Up</button>
+                    </form>
+                </div>
+                <div class="form-section">
+                    <h2>Login as <span id="role-login"></span></h2>
+                    <form>
+                        <input type="email" placeholder="Email" required><br>
+                        <input type="password" placeholder="Password" required><br>
+                        <button class="button" type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
