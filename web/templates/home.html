@@ -1,63 +1,320 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Producer - FarmConnect</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <script src="{% static 'js/scripts.js' %}"></script>
+    <title>FarmConnect - Connect Farmers & Consumers</title>
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --secondary-green: #4caf50;
+            --light-green: #a5d6a7;
+            --earth-brown: #795548;
+            --cream: #fff8e1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                        url('/api/placeholder/1920/1080') center/cover;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .role-selection {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        .role-selection h1 {
+            color: var(--primary-green);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .role-selection p {
+            color: var(--earth-brown);
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .button:hover {
+            background-color: var(--secondary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-container {
+            display: none;
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+            border-radius: 20px;
+            background-color: white;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--primary-green);
+        }
+
+        .tabs button {
+            flex: 1;
+            padding: 20px;
+            font-size: 18px;
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tabs button.active {
+            background-color: var(--secondary-green);
+            font-weight: bold;
+        }
+
+        .form-section {
+            width: 100%;
+            padding: 40px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .form-section h2 {
+            color: var(--primary-green);
+            margin-bottom: 30px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"] {
+            width: 90%;
+            padding: 15px;
+            margin: 12px 0;
+            border: 2px solid var(--light-green);
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+        }
+
+        .file-upload {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .file-upload label {
+            color: var(--earth-brown);
+            margin-bottom: 10px;
+        }
+
+        .location-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Added decorative elements */
+        .decorative-leaf {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .leaf-1 {
+            top: 20px;
+            left: 20px;
+            transform: rotate(45deg);
+        }
+
+        .leaf-2 {
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(-135deg);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            .form-section {
+                padding: 20px;
+            }
+
+            .button {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+    <script>
+        let selectedRole = "";
+
+        function showForm(role) {
+            selectedRole = role;
+            document.querySelector('.role-selection').style.display = 'none';
+            document.querySelector('.form-container').style.display = 'block';
+            document.getElementById('role-signup').textContent = selectedRole;
+            document.getElementById('role-login').textContent = selectedRole;
+            document.getElementById('tip').value = selectedRole;
+            document.getElementById('tip1').value = selectedRole;
+            document.querySelector('.tabs button:first-child').classList.add('active');
+            switchTab(1);
+        }
+
+        function switchTab(tabIndex) {
+            const tabs = document.querySelectorAll('.tabs button');
+            tabs.forEach((tab, index) => {
+                tab.classList.toggle('active', index === tabIndex);
+            });
+            const formSections = document.querySelectorAll('.form-section');
+            formSections.forEach((section, index) => {
+                section.classList.toggle('hidden', index !== tabIndex);
+            });
+        }
+
+        function detectLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    
+                    const apiUrl = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&addressdetails=1`;
+
+                    fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data && data.address) {
+                                const location = data.address.city || data.address.town || data.address.village || 'Unknown location';
+                                document.getElementById('location').value = location;
+                            } else {
+                                alert("Location details not available.");
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching location:', error);
+                            alert("Failed to retrieve location details.");
+                        });
+                }, function() {
+                    alert("Unable to retrieve your location.");
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+    </script>
 </head>
 <body>
+    <!-- Decorative SVG elements -->
+    <svg class="decorative-leaf leaf-1" viewBox="0 0 100 100">
+        <path d="M50,10 Q80,50 50,90 Q20,50 50,10" fill="#4caf50"/>
+    </svg>
+    <svg class="decorative-leaf leaf-2" viewBox="0 0 100 100">
+        <path d="M50,10 Q80,50 50,90 Q20,50 50,10" fill="#4caf50"/>
+    </svg>
+
     <div class="container">
-        <div class="tabs">
-            <button onclick="switchTab(0)" class="active">Sign Up</button>
-            <button onclick="switchTab(1)">Login</button>
+        <div class="role-selection">
+            <h1>Welcome to FarmConnect</h1>
+            <p>Connecting farmers and consumers for a sustainable future</p>
+            <button class="button" onclick="showForm('Producer')">Join as Farmer</button>
+            <button class="button" onclick="showForm('Consumer')">Join as Consumer</button>
         </div>
-        <div class="form-content">
-            <!-- Sign-Up Form -->
-            <div class="form-section" id="signup-section">
-                <h1>Sign Up as Producer</h1>
-                <form action="{% url 'producer_signup' %}" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <input type="text" placeholder="Full Name" name="name" required>
-                    <input type="number" placeholder="Phone Number" name="phone" required>
-                    <input type="password" placeholder="Create Password" name="password" required>
-                    <div class="file-upload">
-                        <label for="imageUpload">Profile Picture</label>
-                        <input type="file" id="imageUpload" name="image" accept="image/*" required>
-                    </div>
-                    <div class="location-container">
-                        <input type="text" id="location" name="location" placeholder="Your Location" required>
-                        <button type="button" class="button" onclick="detectLocation()">Detect Location</button>
-                    </div>
-                    <button class="button" type="submit">Sign Up</button>
-                </form>
+
+        <div class="form-container">
+            <div class="tabs">
+                <button onclick="switchTab(0)">Sign Up</button>
+                <button onclick="switchTab(1)">Login</button>
             </div>
-            <!-- Login Form -->
-            <div class="form-section hidden" id="login-section">
-                <h1>Login as Producer</h1>
-                <form action="{% url 'producer_login' %}" method="post">
-                    {% csrf_token %}
-                    <input type="email" placeholder="Email Address" name="email" required>
-                    <input type="password" placeholder="Password" name="password" required>
-                    <button class="button" type="submit">Login</button>
-                </form>
+            <div class="form-content">
+                <div class="form-section hidden">
+                    <h2>Sign Up as <span id="role-signup"></span></h2>
+                    <form action="{% url 'home' %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="tip" id="tip" hidden>
+                        <input type="text" placeholder="Full Name" required>
+                        <input type="number" placeholder="Phone Number" required>
+                        <input type="password" placeholder="Create Password" required>
+                        
+                        <div class="file-upload">
+                            <label for="imageUpload">Profile Picture</label>
+                            <input type="file" id="imageUpload" name="image" accept="image/*" required>
+                        </div>
+                        
+                        <div class="location-container">
+                            <input type="text" id="location" placeholder="Your Location" required>
+                            <button type="button" class="button" onclick="detectLocation()">Detect Location</button>
+                        </div>
+                        
+                        <button class="button" type="submit">Create Account</button>
+                    </form>
+                </div>
+                <div class="form-section">
+                    <h2>Login as <span id="role-login"></span></h2>
+                    <form action="{% url 'home' %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="tip" id="tip1" hidden>
+                        <input type="email" placeholder="Email Address" required>
+                        <input type="password" placeholder="Password" required>
+                        <button class="button" type="submit">Login</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-
-    <script>
-        function switchTab(index) {
-            const sections = document.querySelectorAll('.form-section');
-            sections.forEach((section, i) => {
-                section.classList.toggle('hidden', i !== index);
-            });
-            const tabs = document.querySelectorAll('.tabs button');
-            tabs.forEach((tab, i) => {
-                tab.classList.toggle('active', i === index);
-            });
-        }
-    </script>
 </body>
 </html>
