@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,7 +73,7 @@
   color: white;
   padding: 2rem;
   position: relative;
-  background-image: url('images/green-field-spring-wallpaper-preview.jpg'); /* Replace with your background image URL */
+  background-image: url("{% static 'images/green-field-spring-wallpaper-preview.jpg' %}");
   background-size: cover;
   background-position: center;
 }
@@ -123,7 +124,7 @@
   <div class="navbar">
     <!-- Logo -->
     <div class="logo">
-      <img  height=50px width=50px src="images/logo_output.png" alt="Logo"> <!-- Replace with your logo URL -->
+      <img  height=50px width=50px src="{% static 'images\logo_output.png' %}" alt="Logo"> <!-- Replace with your logo URL -->
       <a href="#home" style="color: white; font-weight: bold;">Farm India</a>
     
     </div>
@@ -135,7 +136,7 @@
       <a href="#profile">Profile</a>
       <!-- Profile Picture -->
       <div class="profile">
-        <img src="images/profile1.jpeg" alt="Profile"> <!-- Replace with your profile image URL -->
+        <img src="{% static 'images/profile1.jpeg' %}" alt="Profile"> <!-- Replace with your profile image URL -->
       </div>
     </div>
   </div>
@@ -145,12 +146,11 @@
     <div class="content">
       <h1>Sell Your Products to Your Consumers</h1>
       <p>With fair prices and no middlemen, take control of your business and connect directly with your buyers.</p>
-      <button style="background-color:#007bff;">Sell</button>
+      <a href="{% url 'sell' %}"style="background-color:#007bff;">Sell</a>
       
     </div>
     <div class="farmer-image">
-      <img class="farm" height=400px width=300px src="images/farmersell.png" alt="Farmer">
-      <!-- Replace with your farmer image URL -->
+      <img class="farm" height=400px width=300px src="{% static 'images/farmersell.png' %}" alt="Farmer">
     </div>
   </section>
 </body>

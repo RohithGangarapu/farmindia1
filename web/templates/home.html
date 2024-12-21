@@ -109,25 +109,18 @@
                 section.classList.toggle('hidden', index !== tabIndex);
             });
         }
-
-        // Function to detect user's location and find the place
         function detectLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     const lat = position.coords.latitude;
                     const lon = position.coords.longitude;
-                    
-                    // Display latitude and longitude in the location field
                     document.getElementById('location').value = `Latitude: ${lat}, Longitude: ${lon}`;
-                    
-                    // Call reverse geocoding API to get the place name
                     const apiUrl = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&addressdetails=1`;
 
                     fetch(apiUrl)
                         .then(response => response.json())
                         .then(data => {
                             if (data && data.address) {
-                                // Format the address or location details
                                 const location = data.address.city || data.address.town || data.address.village || 'Unknown location';
                                 document.getElementById('location').value = location;
                             } else {
@@ -164,7 +157,9 @@
             <div class="form-content">
                 <div class="form-section hidden">
                     <h2>Sign Up as <span id="role-signup"></span></h2>
-                    <form>
+                    <form action="{% url 'home' %}"  method="post">
+                        {% csrf_token %}
+                        <input type="text" name="tip" id="tip" value="producer" hidden>
                         <input type="text" placeholder="Name" required><br>
                         <input type="email" placeholder="Email" required><br>
                         <input type="password" placeholder="Password" required><br>
@@ -175,7 +170,8 @@
                 </div>
                 <div class="form-section">
                     <h2>Login as <span id="role-login"></span></h2>
-                    <form>
+                    <form action="{% url 'home' %}" method="post">
+                        {% csrf_token %}
                         <input type="email" placeholder="Email" required><br>
                         <input type="password" placeholder="Password" required><br>
                         <button class="button" type="submit">Login</button>
