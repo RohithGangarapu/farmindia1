@@ -48,3 +48,9 @@ def sellcrop(request):
     return render(request,'sellcrops.html')
 def sellinfo(request):
     return render(request,'sellinfo.html')
+def buyveg(request):
+    return render(request,'buyveg.html')
+def buycrop(request):
+    return render(request,'buycrops.html')
+def buyfruits(request):
+    return render(request,'buyfruits.html')

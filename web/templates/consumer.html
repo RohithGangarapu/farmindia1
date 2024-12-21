@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,41 +34,48 @@
             background: #e0e0e0;
         }
         .container {
-            padding: 2rem;
-        }
-        .product-card {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            background-color: white;
-        }
-        .product-card h3 {
-            margin: 0;
-            color: #4CAF50;
-        }
-        .product-card p {
-            margin: 0.5rem 0;
-        }
-        .btn {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            color: white;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 3px;
-            text-decoration: none;
             text-align: center;
+            padding: 50px 20px;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .btn:hover {
-            background-color: #45a049;
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
-        footer {
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .card h3 {
+            margin: 15px 0;
+            color: #333;
+        }
+        .card p {
+            color: #666;
+        }
+        .footer {
+            margin-top: 50px;
             text-align: center;
-            padding: 1rem 0;
-            background: #333;
-            color: white;
+            color: #555;
+        }
+        .container1 {
+            text-align: center;
+            padding: 50px 20px;
         }
     </style>
 </head>
@@ -79,47 +87,47 @@
     <nav>
         <a href="login">Home</a>
         <a href="#">Crops</a>
-        <a href="#">Producers</a>
         <a href="#">Contact</a>
         <a href="#">About</a>
     </nav>
-    <div class="container">
+    <div class="container1">
         <h2>Consumer Dashboard</h2>
         <p>Explore available crops and place your orders directly with producers:</p>
-        
-        <div class="product-card">
-            <h3>Wheat</h3>
-            <p>Price: ₹50/kg</p>
-            <p>Producer: Dinesh</p>
-            <p>Location: Bhogapuram, VZM</p>
-            <button class="btn" onclick="placeOrder('Wheat', 'Dinesh', '₹50/kg')">Order Now</button>
+        <div class="container">
+            <h2>Select What You Want to Order</h2>
+            <p>Choose between fruits or vegetables to get started.</p>
+            <div class="options">
+                <div class="card" >
+                    <img height=200px src="{% static 'images/pngtree-many-fruits-are-placed-next-to-each-other-in-different-piles-image_2972213.jpg' %}" alt="Fruits">
+                    <h3>Fruits</h3>
+                    <p>Buy fresh and organic fruits from  producers.</p>
+                </div>
+                <div class="card" >
+                    <img src="{% static 'images/fresh-vegetables.jpg' %}" alt="Vegetables">
+                    <h3>Vegetables</h3>
+                    <p>Sell fresh and organic vegetables to your customers.</p>
+                </div>
+                <div class="card">
+                    <img src="{% static 'images/crops.jpg' %}" alt="Vegetables">
+                    <h3>Crops</h3>
+                    <p>Sell Crops to your customers.</p>   
+                </div>
+            </div>
         </div>
-
-        <div class="product-card">
-            <h3>Tomato</h3>
-            <p>Price: ₹60/Kg</p>
-            <p>Producer: Veeru</p>
-            <p>Location: Tuni, East Godavari</p>
-            <button class="btn" onclick="placeOrder('Tomato', 'Veeru', '₹60/Kg')">Order Now</button>
-        </div>
-
-        <div class="product-card">
-            <h3>Rice</h3>
-            <p>Price: ₹55/kg</p>
-            <p>Producer: Alice</p>
-            <p>Location: Purnamarket, Vizag</p>
-            <button class="btn" onclick="placeOrder('Rice', 'Alice', '₹55/kg')">Order Now</button>
-        </div>
-    </div>
     <footer>
         <p>&copy; 2024 CropConnect. All rights reserved.</p>
     </footer>
 
+    
     <script>
-        function placeOrder(crop, producer, price) {
-            alert(`You have placed an order for ${crop} from ${producer} at ${price}.`);
-            // You can add logic here to send order details to the backend.
+        let arr=["{% url 'buyfruits' %}","{%url 'buyveg' %}","{% url 'buycrop' %}"]
+        for(let i=0;i<3;i++){
+        document.getElementsByClassName('card')[i].addEventListener('click',
+        function() {
+                // Redirect to another page
+                window.location.href = arr[i];  // replace with your target URL
+            });
         }
-    </script>
+      </script>
 </body>
 </html>
