@@ -1,0 +1,54 @@
+Onion Big has a price 57 on date 2024-12-22
+Onion Small has a price 70 on date 2024-12-22
+Tomato has a price 27 on date 2024-12-22
+Green Chilli has a price 49 on date 2024-12-22
+Beetroot has a price 46 on date 2024-12-22
+Potato has a price 45 on date 2024-12-22
+Raw Banana (Plantain) has a price 9 on date 2024-12-22
+Amaranth Leaves has a price 13 on date 2024-12-22
+Amla has a price 70 on date 2024-12-22
+Ash gourd has a price 21 on date 2024-12-22
+Baby Corn has a price 54 on date 2024-12-22
+Banana Flower has a price 19 on date 2024-12-22
+Capsicum has a price 42 on date 2024-12-22
+Bitter Gourd has a price 33 on date 2024-12-22
+Bottle Gourd has a price 48 on date 2024-12-22
+Butter Beans has a price 52 on date 2024-12-22
+Broad Beans has a price 45 on date 2024-12-22
+Cabbage has a price 32 on date 2024-12-22
+Carrot has a price 47 on date 2024-12-22
+Cauliflower has a price 31 on date 2024-12-22
+Cluster beans has a price 45 on date 2024-12-22
+Coconut has a price 43 on date 2024-12-22
+Colocasia Leaves has a price 12 on date 2024-12-22
+Colocasia has a price 29 on date 2024-12-22
+Coriander Leaves has a price 10 on date 2024-12-22
+Corn has a price 30 on date 2024-12-22
+Cucumber has a price 28 on date 2024-12-22
+Curry Leaves has a price 30 on date 2024-12-22
+Dill Leaves has a price 11 on date 2024-12-22
+Drumsticks has a price 120 on date 2024-12-22
+Brinjal has a price 38 on date 2024-12-22
+Brinjal (Big) has a price 37 on date 2024-12-22
+Elephant Yam has a price 40 on date 2024-12-22
+Fenugreek Leaves has a price 10 on date 2024-12-22
+French Beans has a price 61 on date 2024-12-22
+Garlic has a price 342 on date 2024-12-22
+Ginger has a price 63 on date 2024-12-22
+Onion Green has a price 63 on date 2024-12-22
+Green Peas has a price 63 on date 2024-12-22
+Ivy Gourd has a price 34 on date 2024-12-22
+Lemon (Lime) has a price 55 on date 2024-12-22
+Mango Raw has a price 44 on date 2024-12-22
+Mint Leaves has a price 6 on date 2024-12-22
+Mushroom has a price 85 on date 2024-12-22
+Mustard Leaves has a price 12 on date 2024-12-22
+Ladies Finger has a price 40 on date 2024-12-22
+Pumpkin has a price 17 on date 2024-12-22
+Radish has a price 40 on date 2024-12-22
+Ridge Gourd has a price 40 on date 2024-12-22
+Shallot (Pearl Onion) has a price 30 on date 2024-12-22
+Snake Gourd has a price 36 on date 2024-12-22
+Sorrel Leaves has a price 10 on date 2024-12-22
+Spinach has a price 12 on date 2024-12-22
+Sweet Potato has a price 57 on date 2024-12-22

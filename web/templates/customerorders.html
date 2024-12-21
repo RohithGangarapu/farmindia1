@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Orders</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+        .grid-item {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .grid-item h3 {
+            margin: 0 0 0.5rem;
+        }
+        .grid-item p {
+            margin: 0.5rem 0;
+        }
+        .accept-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .accept-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Customer Orders</h1>
+    </div>
+    <div class="grid-container">
+        {% for customer in customers %}
+        <div class="grid-item">
+            <h3>{{ customer.name }}</h3>
+            <p><strong>Product:</strong> {{ customer.product_name }}</p>
+            <p><strong>Price:</strong> ${{ customer.price }}</p>
+            <p><strong>Contact:</strong> {{ customer.contact }}</p>
+            <button class="accept-btn" onclick="acceptOrder('{{ customer.id }}')">Accept Order</button>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        async function acceptOrder(customerId) {
+            try {
+                const response = await fetch(`/accept_order?customer_id=${customerId}`, {
+                    method: 'GET'
+                });
+                const result = await response.json();
+                if (result.success) {
+                    alert('Order Accepted!');
+                } else {
+                    alert('Failed to accept order.');
+                }
+            } catch (error) {
+                console.error('Error accepting order:', error);
+                alert('An error occurred while accepting the order.');
+            }
+        }
+    </script>
+</body>
+</html>
