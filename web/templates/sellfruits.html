@@ -133,5 +133,15 @@
     <footer>
         <p>&copy; 2024 CropConnect. All rights reserved.</p>
     </footer>
+    <script>
+        let arr=["{% url 'sellinfo' %}"]
+    for(let i=0;i<3;i++){
+    document.getElementsByClassName('btn')[i].addEventListener('click',
+    function() {
+            // Redirect to another page
+            window.location.href = arr[0];  // replace with your target URL
+        });
+    }
+    </script>
 </body>
 </html>
