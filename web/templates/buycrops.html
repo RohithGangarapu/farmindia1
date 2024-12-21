@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Producer Page- CropConnect</title>
+    <title>Consumer Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -104,7 +104,8 @@
     <div class="container">
         <h2>Consumer Dashboard</h2>
         <p>Welcome,consumer! Here are the crops available to order:</p>
-
+        <input type="number" id="price" hidden>
+        <input type="number" id="quantity" hidden>
         <!-- Product Grid -->
         <div class="product-grid">
             <div class="product-card">
@@ -147,6 +148,8 @@
                 if (price && quantity) {
                     // Construct URL or handle order submission logic
                     alert(`Order Summary:\nPrice: ${price}\nQuantity: ${quantity}`);
+                    document.getElementById('price').value=price;
+                    document.getElementById('quantity').value=quantity;
                     // Redirect to another page or handle backend submission
                 } else {
                     alert("Order canceled. Both price and quantity are required.");
