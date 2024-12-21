@@ -1,0 +1,54 @@
+Onion Big 57
+Onion Small 70
+Tomato 27
+Green Chilli 49
+Beetroot 46
+Potato 45
+Raw Banana 9
+Amaranth Leaves 13
+Amla 70
+Ash gourd 21
+Baby Corn 54
+Banana Flower 19
+Capsicum 42
+Bitter Gourd 33
+Bottle Gourd 48
+Butter Beans 52
+Broad Beans 45
+Cabbage 32
+Carrot 47
+Cauliflower 31
+Cluster beans 45
+Coconut 43
+Colocasia Leaves 12
+Colocasia 29
+Coriander Leaves 10
+Corn 30
+Cucumber 28
+Curry Leaves 30
+Dill Leaves 11
+Drumsticks 120
+Brinjal 38
+Brinjal 37
+Elephant Yam 40
+Fenugreek Leaves 10
+French Beans 61
+Garlic 342
+Ginger 63
+Onion Green 63
+Green Peas 63
+Ivy Gourd 34
+Lemon 55
+Mango Raw 44
+Mint Leaves 6
+Mushroom 85
+Mustard Leaves 12
+Ladies Finger 40
+Pumpkin 17
+Radish 40
+Ridge Gourd 40
+Shallot 30
+Snake Gourd 36
+Sorrel Leaves 10
+Spinach 12
+Sweet Potato 57

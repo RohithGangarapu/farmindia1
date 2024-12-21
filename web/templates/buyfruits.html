@@ -104,8 +104,6 @@
     <div class="container">
         <h2>Consumer Dashboard</h2>
         <p>Welcome, Consumer! Here are the Fruits available to Buy:</p>
-
-        <!-- Product Grid -->
         <div class="product-grid">
             <div class="product-card">
                 <img src="{% static 'images/fresh-red-apples-on-white-background.jpg' %}" alt="Wheat">
@@ -127,27 +125,19 @@
                 <p>Grapes are available for sale.</p>
                 <a href="#" class="btn">Order</a>
             </div>
-
-            <!-- More product cards can be added here -->
         </div>
     </div>
     <footer>
         <p>&copy; 2024 CropConnect. All rights reserved.</p>
     </footer>
     <script>
-        // URL array for redirection (you can update it as required)
-    
-        // Add event listeners to the order buttons
         const buttons = document.getElementsByClassName('btn');
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].addEventListener('click', function () {
-                // Prompt the consumer for price and quantity
                 const price = prompt("Enter the price you are willing to pay:");
                 const quantity = prompt("Enter the quantity you want to order:");
                 if (price && quantity) {
-                    // Construct URL or handle order submission logic
                     alert(`Order Summary:\nPrice: ${price}\nQuantity: ${quantity}`);
-                    // Redirect to another page or handle backend submission
                 } else {
                     alert("Order canceled. Both price and quantity are required.");
                 }
