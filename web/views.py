@@ -33,7 +33,7 @@ from django.shortcuts import render
 def login(request):
     return render(request,'home.html')
 def home(request):
-    if request.POST.get('tip')=="producer":
+    if request.POST.get('tip')=="Producer":
         return render(request,'producer.html')
     else:
         print(request.POST.get('tip'))

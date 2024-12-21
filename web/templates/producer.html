@@ -131,7 +131,7 @@
 
     <!-- Navigation Links -->
     <div class="links">
-      <a href="home.html">Home</a>
+      <a href="login">Home</a>
       <a href="#Orders">Customer Orders</a>
       <a href="#profile">Profile</a>
       <!-- Profile Picture -->
@@ -146,8 +146,8 @@
     <div class="content">
       <h1>Sell Your Products to Your Consumers</h1>
       <p>With fair prices and no middlemen, take control of your business and connect directly with your buyers.</p>
-      <a href="{% url 'sell' %}"style="background-color:#007bff;">Sell</a>
-      
+      <div style="display:flex;justify-content:center;align-items: center;height:30px;width:60px;background-color:#007bff;"><a href="{% url 'sell' %}">Sell</a></div>
+    
     </div>
     <div class="farmer-image">
       <img class="farm" height=400px width=300px src="{% static 'images/farmersell.png' %}" alt="Farmer">
