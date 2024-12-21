@@ -9,10 +9,11 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      background-color: #f4fdf5;
     }
-    .farm{
-      margin-right:65px;
-      margin-bottom:50px;
+    .farm {
+      margin-right: 65px;
+      margin-bottom: 50px;
     }
 
     /* Navbar styles */
@@ -21,14 +22,15 @@
       justify-content: space-between;
       align-items: center;
       height: 75px;
-      background-color: yellowgreen;
+      background-color: #388e3c;
       padding: 0 1rem;
+      color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
     }
 
     .navbar .logo {
       display: flex;
       align-items: center;
-
     }
 
     .navbar .logo img {
@@ -43,13 +45,14 @@
 
     .navbar a {
       text-decoration: none;
-      color: white;
+      color: #ffffff;
       margin: 0 1rem;
       font-size: 1.2rem;
+      transition: color 0.3s;
     }
 
     .navbar a:hover {
-      text-decoration: underline;
+      color: #aed581;
     }
 
     .navbar .profile {
@@ -62,21 +65,23 @@
       height: 30px;
       border-radius: 50%;
       margin-left: 1rem;
+      border: 2px solid #ffffff;
     }
 
     /* Home section styles */
     .home {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  color: white;
-  padding: 2rem;
-  position: relative;
-  background-image: url("{% static 'images/green-field-spring-wallpaper-preview.jpg' %}");
-  background-size: cover;
-  background-position: center;
-}
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh;
+      color: #ffffff;
+      padding: 2rem;
+      position: relative;
+      background-image: url("{% static 'images/green-field-spring-wallpaper-preview.jpg' %}");
+      background-size: cover;
+      background-position: center;
+    }
+
     .content {
       max-width: 50%;
     }
@@ -84,25 +89,46 @@
     .content h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
     }
 
     .content p {
       font-size: 1.5rem;
       margin-bottom: 2rem;
+      color: #ffffff;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     }
 
     .content button {
       padding: 0.8rem 1.5rem;
       font-size: 1rem;
-      background-color: #4CAF50;
-      color: white;
+      background-color:rgb(233, 181, 36);
+      color: #ffffff;
       border: none;
       cursor: pointer;
       border-radius: 5px;
+      transition: background-color 0.3s;
     }
 
     .content button:hover {
-      background-color: #45a049;
+      background-color:rgb(233, 181, 36);
+    }
+
+    .content a {
+      display: inline-block;
+      text-align: center;
+      background-color: rgb(233, 181, 36);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .content a:hover {
+      background-color: rgb(233, 181, 36);
     }
 
     .farmer-image {
@@ -113,8 +139,8 @@
       max-width: 100%;
       height: auto;
       border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
-   
   </style>
 </head>
 <body>
@@ -122,9 +148,8 @@
   <div class="navbar">
     <!-- Logo -->
     <div class="logo">
-      <img  height=50px width=50px src="{% static 'images\logo_output.png' %}" alt="Logo"> <!-- Replace with your logo URL -->
-      <a href="#home" style="color: white; font-weight: bold;">Farm India</a>
-    
+      <img height="75px" width="60px" src="{% static 'images/logo_output.png' %}" alt="Logo"> <!-- Replace with your logo URL -->
+      <a href="#home" style="color: white; font-weight: bold; font-size: 30px;">Farm India</a>
     </div>
 
     <!-- Navigation Links -->
@@ -144,11 +169,10 @@
     <div class="content">
       <h1>Sell Your Products to Your Consumers</h1>
       <p>With fair prices and no middlemen, take control of your business and connect directly with your buyers.</p>
-      <div style="display:flex;justify-content:center;align-items: center;height:30px;width:60px;background-color:#007bff;"><a href="{% url 'sell' %}">Sell</a></div>
-    
+      <a style="color:green;font-weight:bold;" href="{% url 'sell' %}">Sell</a>
     </div>
     <div class="farmer-image">
-      <img class="farm" height=400px width=300px src="{% static 'images/farmersell.png' %}" alt="Farmer">
+      <img class="farm" height="400px" width="300px" src="{% static 'images/farmersell.png' %}" alt="Farmer">
     </div>
   </section>
 </body>
